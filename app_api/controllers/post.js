@@ -8,7 +8,7 @@ var sendJsonResponse = function(res, status, content) {
 
 module.exports.PostListById = function(req,res){
     Blog
-        .find({})
+        .find()
         .exec(function(err, blog) {
             if (!blog) {
                 sendJsonResponse(res, 404, {
@@ -19,7 +19,7 @@ module.exports.PostListById = function(req,res){
                 sendJsonResponse(res, 404, err);
                 return;
             }
-            sendJsonResponse(res, 200, post);
+            sendJsonResponse(res, 200, blog);
         });
 }
 

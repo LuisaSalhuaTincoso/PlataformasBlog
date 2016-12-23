@@ -13,7 +13,7 @@
         BlogINPData.listPostById()
             .success(function(data) {
                 vm.message = data.length > 0 ? "" : "No post found nearby";
-                vm.data = { post: data };
+                vm.data = { posts: data };
                 console.log(vm.data);
             })
             .error(function (e) {
