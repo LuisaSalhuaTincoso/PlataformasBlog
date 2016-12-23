@@ -9,32 +9,31 @@ var fs = require('fs');
 
 require('./app_api/models/db');
 
-var routes = require('./app_server/routes/index');
-var users = require('./app_server/routes/users');
+//var routes = require('./app_server/routes/index');
+//var users = require('./app_server/routes/users');
 var routesApi = require('./app_api/routes/index');//VARIABLE PARA LAS RUTAS DE LA API
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'app_server' ,'views'));
+//app.set('views', path.join(__dirname, 'app_server' ,'views'));
 app.set('view engine', 'jade');
 
 var appClientFiles = [
 'app_client/app.js',
-'app_client/home/home.controller.js',
-'app_client/publishDetail/publishDetail.controller.js',
-'app_client/common/services/lyricsShareData.service.js',
+'app_client/inicio/inicio.controller.js',
+'app_client/common/services/BlogINPData.service.js',
 'app_client/common/directives/navigation/navigation.directive.js',
 'app_client/common/directives/footerGeneric/footerGeneric.directive.js'
 
 ];
 var uglified = uglifyJs.minify(appClientFiles, { compress : false });
 
-fs.writeFile('public/Angular/lyricsShare.min.js', uglified.code, function (err){
+fs.writeFile('public/Angular/BlogINP.min.js', uglified.code, function (err){
   if(err) {
     console.log(err);
   } else {
-    console.log("Script generated and saved:", 'lyricsShare.min.js');
+    console.log("Script generated and saved:", 'BlogINP.min.js');
   }
 });
 
@@ -52,7 +51,7 @@ app.use(express.static(path.join(__dirname, 'app_client')));//PARA AGREGAR EL AN
 app.use('/api', routesApi);//ESPECIFICA QUE SE USARA la API PARA LAS PETICIONES GET POST DELETE
 
 app.use(function(req, res) {//PARA HACER USO DEL LA APLICACION ANGULAR
-  res.sendfile(path.join(__dirname, 'app_client', 'index.html'));
+  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
 
 // catch 404 and forward to error handler

@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module('lyricsShareApp')
+        .module('BlogINPApp')
         .directive('footerGeneric', footerGeneric);
     
     function footerGeneric () {

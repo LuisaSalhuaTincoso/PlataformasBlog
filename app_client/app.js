@@ -1,27 +1,22 @@
 (function () {
 
-    angular.module('lyricsShareApp', ['ngRoute']); //ngRouter: se agrega la dependencia del modulo router
+    angular.module('BlogINPApp', ['ngRoute']); //ngRouter: se agrega la dependencia del modulo router
 
-    function config ($routeProvider,$locationProvider) {
+    function config ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'home/home.view.html',
-                controller: 'homeCtrl',
+                templateUrl: 'inicio/inicio.view.html',
+                controller: 'inicioCtrl',
                 controllerAs: 'vm'
             })
-            .when('/detalle/:publishid', {
-                templateUrl: '/publishDetail/publishDetail.view.html',
-                controller: 'publishDetailCtrl',
-                controllerAs: 'vm'
-            })
-            
+
             .otherwise({redirectTo: '/'});
-        $locationProvider.html5Mode(true);//ENCENDEMOS CARACTERISTICAS DE HTML5
-    
+        //$locationProvider.html5Mode(true);//ENCENDEMOS CARACTERISTICAS DE HTML5
+
     };
 
     angular
-        .module('lyricsShareApp')
-        .config(['$routeProvider','$locationProvider', config]);
+        .module('BlogINPApp')
+        .config(['$routeProvider', config]);
 
 })();

@@ -1,9 +1,9 @@
 var mongoose = require( 'mongoose' );
 
-require('./publicacion');
-require('./usuario');
+require('./post');
 
-var dbURI = 'mongodb://localhost/LyricsShare';
+
+var dbURI = 'mongodb://localhost/BlogINP';
 if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGOLAB_URI;
 }
